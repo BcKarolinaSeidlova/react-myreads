@@ -4,6 +4,9 @@ import React from 'react'
 import Book from './Book'
 
 class Shelf extends React.Component {
+ updateBook = (book, shelf) => {
+    this.props.onUpdateShelf(book, shelf)
+  }
 
 
 
@@ -15,7 +18,8 @@ class Shelf extends React.Component {
             <ol className="books-grid">
             {this.props.books.map((book) => (
                 <li key={book.id}>
-                  <Book book= { book }/>
+                  <Book book= { book }
+                    onUpdateBook={(book, shelf) => this.updateBook(book, shelf)}/>
                 </li>
                 ))
               }

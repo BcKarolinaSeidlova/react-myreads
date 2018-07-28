@@ -1,18 +1,19 @@
 import React from 'react'
-import * as BooksAPI from './BooksAPI'
 
 
 class Book extends React.Component {
 
   state = {
-    shelf: this.props.book.shelf,
+    shelf: 'none',
   }
 
   setShelf = (e) => {
     e.preventDefault()
-    this.setState(
-      {shelf: e.target.value})
-  
+    this.setState({
+      shelf: e.target.value,
+    })
+
+    this.props.onUpdateBook(this.props.book, e.target.value)
   }
 
   
