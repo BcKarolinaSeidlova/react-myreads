@@ -28,8 +28,6 @@ class App extends React.Component {
     })  
   }
 
-
-
  // search input
   updateQuery = (query) => {
     this.setState({query: query})
@@ -81,7 +79,6 @@ clearQuery = () => {
         updateShelf = {this.updateShelf} /> 
         )}/>
       </div>
-
       
     )
   }
