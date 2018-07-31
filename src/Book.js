@@ -1,17 +1,16 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 
 
 class Book extends React.Component {
 
   state = {
-    shelf: 'none',
+    shelf: this.props.book.shelf
   }
 
   setShelf = (e) => {
     e.preventDefault()
     this.setState({
-      shelf: e.target.value,
+      shelf: e.target.value
     })
 
     this.props.onUpdateBook(this.props.book, e.target.value)
@@ -22,18 +21,19 @@ class Book extends React.Component {
 	render() { 
 
     const { book } = this.props
-    const imageLink = book.imageLinks.thumbnail
+    const imageLink = book.imageLinks ? book.imageLinks.thumbnail : ""
 
-
-  //DOM for book
+    
+  
 		return (
 				<div className="book">
           <div className="book-top">
             <div className="book-cover" style={{ width: 128, height: 193, 
-              backgroundImage: `url(${imageLink})` }}></div>
+              backgroundImage: `url(${imageLink})`}}>
+             </div>
               
               <div className="book-shelf-changer">
-                <select value= {this.state.shelf}
+                <select value= {this.state.shelf?this.state.shelf:'none'}
                         onChange = {this.setShelf}>
                   <option value="move" disabled>Move to...</option>
                   <option value="currentlyReading">Currently Reading</option>
@@ -48,7 +48,6 @@ class Book extends React.Component {
           <div className="book-authors">{ book.authors }</div>
 
         </div>
-
 		)
 	}
 
