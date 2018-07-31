@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 
 class Book extends React.Component {
@@ -15,6 +16,7 @@ class Book extends React.Component {
 
     this.props.onUpdateBook(this.props.book, e.target.value)
   }
+
 
   
 	render() { 
